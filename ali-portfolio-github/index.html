@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ali Mohammed — Founder &amp; CEO at Nova, Front-End Developer and Data Analyst based in Baghdad, Iraq. React.js, PHP, MySQL, Python, Java and algorithmic problem solving.">
+<meta name="author" content="Ali Mohammed">
+<meta name="theme-color" content="#0a0a12">
+<meta property="og:title" content="Ali Mohammed — Founder &amp; CEO at Nova">
+<meta property="og:description" content="3+ years building web platforms, 10 shipped, 250+ students taught. Ranked 1st in Iraq for problem solving on Codeforces.">
+<meta property="og:type" content="website">
+<title>Ali Mohammed — Founder &amp; CEO at Nova</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c5cff'/><text x='50' y='68' font-size='54' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ══════════════ PRELOADER ══════════════ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <div class="preloader__mark">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="pl-ring pl-ring--a" cx="60" cy="60" r="46"/>
+        <circle class="pl-ring pl-ring--b" cx="60" cy="60" r="34"/>
+      </svg>
+      <span class="preloader__letter">A</span>
+    </div>
+    <div class="preloader__bar"><i id="preloaderBar"></i></div>
+    <div class="preloader__pct"><span id="preloaderPct">0</span>%</div>
+  </div>
+</div>
+
+<!-- ══════════════ CURSOR / PROGRESS / BACKDROP ══════════════ -->
+<div class="cursor cursor--dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+<div class="scrollbar-progress" aria-hidden="true"><i id="scrollProgress"></i></div>
+
+<div class="backdrop" aria-hidden="true">
+  <canvas id="particles" class="backdrop__canvas"></canvas>
+  <div class="backdrop__grid"></div>
+  <div class="backdrop__orb backdrop__orb--1"></div>
+  <div class="backdrop__orb backdrop__orb--2"></div>
+  <div class="backdrop__orb backdrop__orb--3"></div>
+  <div class="backdrop__noise"></div>
+</div>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#home" class="logo" data-magnetic>
+      <span class="logo__badge">A</span>
+      <span class="logo__text">Ali<span>Mohammed</span></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#home"        class="nav__link is-active" data-i18n="nav.home">Home</a>
+      <a href="#about"       class="nav__link" data-i18n="nav.about">About</a>
+      <a href="#experience"  class="nav__link" data-i18n="nav.experience">Experience</a>
+      <a href="#projects"    class="nav__link" data-i18n="nav.projects">Projects</a>
+      <a href="#skills"      class="nav__link" data-i18n="nav.skills">Skills</a>
+      <a href="#education"   class="nav__link" data-i18n="nav.education">Education</a>
+      <a href="#contact"     class="nav__link" data-i18n="nav.contact">Contact</a>
+      <i class="nav__pill" id="navPill" aria-hidden="true"></i>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn" id="langToggle" type="button" data-tip="العربية" aria-label="Switch language">
+        <span class="icon-btn__label" id="langLabel">ع</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" type="button" data-tip="Theme" aria-label="Toggle theme">
+        <svg class="ico ico--sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/></svg>
+        <svg class="ico ico--moon" viewBox="0 0 24 24"><path d="M20 14.2A8.4 8.4 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2z"/></svg>
+      </button>
+      <a class="btn btn--sm btn--primary nav__cta" href="assets/files/Ali_Mohammed_CV.pdf" download data-magnetic>
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 3.5v11m0 0 4-4m-4 4-4-4M4.5 16.5v2.2a1.8 1.8 0 0 0 1.8 1.8h11.4a1.8 1.8 0 0 0 1.8-1.8v-2.2"/></svg>
+        <span data-i18n="nav.cv">Resume</span>
+      </a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ MOBILE DRAWER ══════════════ -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <nav class="drawer__nav" aria-label="Mobile">
+    <a href="#home"       data-i18n="nav.home">Home</a>
+    <a href="#about"      data-i18n="nav.about">About</a>
+    <a href="#experience" data-i18n="nav.experience">Experience</a>
+    <a href="#projects"   data-i18n="nav.projects">Projects</a>
+    <a href="#skills"     data-i18n="nav.skills">Skills</a>
+    <a href="#education"  data-i18n="nav.education">Education</a>
+    <a href="#contact"    data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="drawer__foot" id="drawerSocial"></div>
+</div>
+<div class="drawer-veil" id="drawerVeil"></div>
+
+<main id="main">
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="home">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="pill reveal" data-reveal>
+          <i class="pill__dot"></i><span data-i18n="hero.badge">Open to opportunities</span>
+        </span>
+
+        <h1 class="hero__title reveal" data-reveal data-delay="1">
+          <span class="hero__hi" data-i18n="hero.hi">Hi, I'm</span>
+          <span class="hero__name" id="heroName">Ali Mohammed</span>
+        </h1>
+
+        <p class="hero__role reveal" data-reveal data-delay="2">
+          <span id="typed" class="typed"></span><i class="caret"></i>
+        </p>
+
+        <p class="hero__bio reveal" data-reveal data-delay="3" data-i18n="hero.bio"></p>
+
+        <div class="hero__meta reveal" data-reveal data-delay="4" id="heroMeta"></div>
+
+        <div class="hero__actions reveal" data-reveal data-delay="5">
+          <a href="#projects" class="btn btn--primary" data-magnetic>
+            <span data-i18n="hero.ctaWork">View my work</span>
+            <svg class="ico ico--arrow" viewBox="0 0 24 24"><path d="M5 12h13m0 0-5-5m5 5-5 5"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--ghost" data-magnetic>
+            <svg class="ico" viewBox="0 0 24 24"><path d="M3.8 6.8h16.4v10.4H3.8z"/><path d="m4.4 7.4 7.6 5.6 7.6-5.6"/></svg>
+            <span data-i18n="hero.ctaHire">Get in touch</span>
+          </a>
+        </div>
+
+        <ul class="hero__social reveal" data-reveal data-delay="6" id="heroSocial"></ul>
+      </div>
+
+      <div class="hero__visual reveal" data-reveal data-delay="3">
+        <div class="orbit" id="orbit">
+          <div class="orbit__core">
+            <img class="orbit__photo" src="assets/images/ali.jpg" width="640" height="640"
+                 alt="Ali Mohammed" decoding="async">
+            <span class="orbit__ring orbit__ring--1"></span>
+            <span class="orbit__ring orbit__ring--2"></span>
+          </div>
+          <div class="orbit__track orbit__track--1"><span class="chip">React</span><span class="chip">Python</span></div>
+          <div class="orbit__track orbit__track--2"><span class="chip">Java</span><span class="chip">C++</span></div>
+          <div class="orbit__track orbit__track--3"><span class="chip">C#</span><span class="chip">JS</span></div>
+        </div>
+
+        <div class="code-card" data-tilt>
+          <div class="code-card__bar"><i></i><i></i><i></i><span>developer.js</span></div>
+          <pre class="code-card__body"><code><span class="c-k">const</span> <span class="c-v">ali</span> = {
+  <span class="c-p">role</span>: <span class="c-s">"Founder &amp; CEO"</span>,
+  <span class="c-p">company</span>: <span class="c-s">"Nova"</span>,
+  <span class="c-p">based</span>: <span class="c-s">"Baghdad, Iraq"</span>,
+  <span class="c-p">stack</span>: [<span class="c-s">"React"</span>, <span class="c-s">"PHP"</span>, <span class="c-s">"MySQL"</span>],
+  <span class="c-p">shipped</span>: <span class="c-n">10</span>,
+  <span class="c-p">taught</span>: <span class="c-n">250</span>,
+  <span class="c-p">codeforces</span>: <span class="c-s">"#1 in Iraq"</span>
+};</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="hero__scroll" aria-label="Scroll down">
+      <span class="hero__mouse"><i></i></span>
+      <span data-i18n="hero.scroll">Scroll</span>
+    </a>
+  </section>
+
+  <!-- ══════════════ STATS ══════════════ -->
+  <section class="section section--tight" id="stats">
+    <div class="container">
+      <div class="stats" id="statsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="about.kicker">Who I am</span></span>
+        <h2 class="sec-head__title" data-i18n="about.title">About me</h2>
+        <p class="sec-head__sub" data-i18n="about.sub"></p>
+      </header>
+
+      <div class="about">
+        <div class="about__text reveal" data-reveal>
+          <p data-i18n="about.p1"></p>
+          <p data-i18n="about.p2"></p>
+          <p data-i18n="about.p3"></p>
+          <div class="about__tags" id="aboutTags"></div>
+        </div>
+        <div class="about__cards" id="aboutCards"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ EXPERIENCE ══════════════ -->
+  <section class="section" id="experience">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="exp.kicker">Career path</span></span>
+        <h2 class="sec-head__title" data-i18n="exp.title">Experience</h2>
+        <p class="sec-head__sub" data-i18n="exp.sub"></p>
+      </header>
+      <div class="timeline" id="timeline"><i class="timeline__spine"><b id="timelineFill"></b></i></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PROJECTS ══════════════ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="proj.kicker">Selected work</span></span>
+        <h2 class="sec-head__title" data-i18n="proj.title">Projects</h2>
+        <p class="sec-head__sub" data-i18n="proj.sub"></p>
+      </header>
+      <div class="filters reveal" data-reveal id="projectFilters"></div>
+      <div class="projects" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="skills.kicker">Toolbox</span></span>
+        <h2 class="sec-head__title" data-i18n="skills.title">Skills</h2>
+        <p class="sec-head__sub" data-i18n="skills.sub"></p>
+      </header>
+      <div class="skills" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ EDUCATION + CERTS ══════════════ -->
+  <section class="section" id="education">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="edu.kicker">Background</span></span>
+        <h2 class="sec-head__title" data-i18n="edu.title">Education &amp; Certifications</h2>
+        <p class="sec-head__sub" data-i18n="edu.sub"></p>
+      </header>
+      <div class="edu">
+        <div class="edu__col" id="eduCol"></div>
+        <div class="edu__col" id="certCol"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ACHIEVEMENTS ══════════════ -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="ach.kicker">Beyond the code</span></span>
+        <h2 class="sec-head__title" data-i18n="ach.title">Achievements &amp; Languages</h2>
+        <p class="sec-head__sub" data-i18n="ach.sub"></p>
+      </header>
+      <div class="ach">
+        <div class="ach__list" id="achList"></div>
+        <div class="ach__langs card">
+          <h3 class="card__title" data-i18n="ach.langTitle">Languages</h3>
+          <div id="langList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <header class="sec-head reveal" data-reveal>
+        <span class="sec-head__kicker"><i></i><span data-i18n="contact.kicker">Say hello</span></span>
+        <h2 class="sec-head__title" data-i18n="contact.title">Let's work together</h2>
+        <p class="sec-head__sub" data-i18n="contact.sub"></p>
+      </header>
+
+      <div class="contact">
+        <div class="contact__side">
+          <div class="contact__cards" id="contactCards"></div>
+          <ul class="contact__social" id="contactSocial"></ul>
+        </div>
+
+        <form class="contact__form card reveal" data-reveal id="contactForm" novalidate>
+          <div class="field">
+            <input type="text" id="fName" name="name" required placeholder=" " autocomplete="name">
+            <label for="fName" data-i18n="contact.name">Your name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="fMail" name="email" required placeholder=" " autocomplete="email">
+            <label for="fMail" data-i18n="contact.email">Email address</label>
+          </div>
+          <div class="field">
+            <input type="text" id="fSubj" name="subject" placeholder=" ">
+            <label for="fSubj" data-i18n="contact.subject">Subject</label>
+          </div>
+          <div class="field">
+            <textarea id="fMsg" name="message" rows="5" required placeholder=" "></textarea>
+            <label for="fMsg" data-i18n="contact.message">Message</label>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit" data-magnetic>
+            <span data-i18n="contact.send">Send message</span>
+            <svg class="ico" viewBox="0 0 24 24"><path d="m4 12 16-7-7 16-2.2-6.8L4 12z"/></svg>
+          </button>
+          <p class="form-note" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#home" class="logo logo--sm">
+      <span class="logo__badge">A</span>
+      <span class="logo__text">Ali<span>Mohammed</span></span>
+    </a>
+    <p class="footer__note" data-i18n="footer.note"></p>
+    <ul class="footer__social" id="footerSocial"></ul>
+  </div>
+  <div class="container footer__bar">
+    <span id="footerCopy"></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg class="ico" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>
+</button>
+
+<!-- ══════════════ PROJECT MODAL ══════════════ -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__veil" data-close></div>
+  <div class="modal__panel" role="document">
+    <button class="modal__x" type="button" data-close aria-label="Close">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
