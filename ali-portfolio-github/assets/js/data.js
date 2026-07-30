@@ -598,7 +598,7 @@ const CV = {
     {
       icon: 'gamepad',
       title: { en: 'Tools & Platforms', ar: 'الأدوات والمنصّات' },
-      items: ['Unity Engine', 'PyGame', 'Postman', 'Scratch', 'code.org']
+      items: ['Unity Engine', 'PyGame', 'Postman']
     }
   ],
 
